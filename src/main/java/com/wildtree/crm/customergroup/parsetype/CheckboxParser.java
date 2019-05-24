@@ -27,7 +27,7 @@ public class CheckboxParser implements TypePaser {
         if(values.isEmpty()) return null;
         StringBuilder sb = new StringBuilder(" and ")
                 .append(condition.getTableName()).append(".")
-                .append(condition.getTableName()).append(" in (");
+                .append(condition.getColumnName()).append(" in (");
         for(int i = 0; i < values.size(); i++) {
             sb.append("'").append(values.get(i)).append("'");
             if(i == values.size() - 1) {

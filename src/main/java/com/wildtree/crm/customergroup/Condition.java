@@ -26,6 +26,10 @@ public class Condition {
      */
     private String columnName;
     /**
+     * 字段类型
+     */
+    private String columnType;
+    /**
      * 关联字段名
      */
     private String joinColumnName;
