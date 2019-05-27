@@ -24,7 +24,7 @@ public class CheckboxParser implements TypePaser {
         String content = condition.getContent();
         if(StringUtils.isBlank(content)) return null;
         List<String> values = JSON.parseArray(content, String.class);
-        if(values.isEmpty()) return null;
+        if(values == null || values.isEmpty()) return null;
         StringBuilder sb = new StringBuilder(" and ")
                 .append(condition.getTableName()).append(".")
                 .append(condition.getColumnName()).append(" in (");
