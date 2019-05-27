@@ -34,8 +34,10 @@ public class RangeParser implements TypePaser {
             sb.append(" > ").append(obj.getString("value"));
         } else if(StringUtils.equalsIgnoreCase(type, "smaller")) {
             sb.append(" < ").append(obj.getString("value"));
+        } else {
+            sb.append(" 1=1 ");
         }
-        return null;
+        return sb.toString();
     }
 
 }

@@ -17,6 +17,7 @@ import java.util.Map;
 public class SimpleMode extends Group {
 
     private Map<String, String> sqlMap = new HashMap<>();
+    private StringBuilder primaryCondition = new StringBuilder(" where 1=1 ");
 
     @Override
     public List group(String conditions, PrimaryTable primaryTable, GroupMode mode) {
@@ -35,9 +36,19 @@ public class SimpleMode extends Group {
                 e.printStackTrace();
                 return Collections.emptyList();
             }
-            concatTableSql(cond.getTableName(), parserClass.parse(cond));
+            if(cond.getTableName().equals(primaryTable.getPrimaryTableName())) {
+                primaryCondition.append(parserClass.parse(cond));
+            } else {
+                concatTableSql(cond.getTableName(), parserClass.parse(cond));
+            }
         }
         //拼接sql并执行
+        StringBuilder sb = new StringBuilder();
+        for(Map.Entry entry : sqlMap.entrySet()) {
+            sb.append(entry.getValue());
+        }
+        sb.append(primaryCondition);
+        System.out.println(sb.toString());
         return Collections.emptyList();
     }
 
@@ -47,7 +58,7 @@ public class SimpleMode extends Group {
      */
     private void initPrimaryTableSql(String primaryTableName) {
         StringBuilder sb = new StringBuilder("select ").append(primaryTableName)
-                .append(".* from ").append(primaryTableName).append(" where 1=1 ");
+                .append(".* from ").append(primaryTableName);
         sqlMap.put(primaryTableName, sb.toString());
     }
 

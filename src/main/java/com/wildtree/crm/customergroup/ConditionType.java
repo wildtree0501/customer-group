@@ -32,7 +32,7 @@ public enum ConditionType {
         if(StringUtils.isBlank(type)) return null;
         ConditionType[] types = ConditionType.values();
         for(int i = 0; i < types.length; i++) {
-            if(types[i].equals(type)) {
+            if(StringUtils.equalsIgnoreCase(types[i].toString(), type)) {
                 return types[i].getParser();
             }
         }
