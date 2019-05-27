@@ -11,10 +11,13 @@ import org.apache.commons.lang3.StringUtils;
 public enum ConditionType {
     CHECKBOX("com.wildtree.crm.customergroup.parsetype.CheckboxParser"),
     RADIO("com.wildtree.crm.customergroup.parsetype.RadioParser"),
+    SELECT("com.wildtree.crm.customergroup.parsetype.RadioParser"),
     DATE("com.wildtree.crm.customergroup.parsetype.DateParser"),
+    DATETIME("com.wildtree.crm.customergroup.parsetype.DateParser"),
+    TEXT("com.wildtree.crm.customergroup.parsetype.TextParser"),
+    TEXTAREA("com.wildtree.crm.customergroup.parsetype.TextParser"),
     NUMBER("com.wildtree.crm.customergroup.parsetype.NumberParser"),
     RANGE("com.wildtree.crm.customergroup.parsetype.RangeParser"),
-    TEXT("com.wildtree.crm.customergroup.parsetype.TextParser"),
     ;
 
     private String parser;
